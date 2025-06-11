@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Você me ama?</title>
   <style>
     body {
@@ -13,11 +13,22 @@
       background-color: #ffe6f0;
       font-family: Arial, sans-serif;
       text-align: center;
+      margin: 0;
+      overflow: hidden;
+      position: relative;
     }
 
     h1 {
       font-size: 2em;
       color: #d63384;
+      margin-bottom: 20px;
+    }
+
+    .button-container {
+      position: relative;
+      width: 300px;
+      height: 60px;
+      margin: 0 auto;
     }
 
     button {
@@ -28,30 +39,36 @@
       border: none;
       border-radius: 5px;
       transition: 0.2s;
+      position: relative;
     }
 
     #sim {
       background-color: #28a745;
       color: white;
+      position: relative;
+      float: left;
     }
 
     #nao {
       background-color: #dc3545;
       color: white;
       position: absolute;
+      top: 10px;
+      right: 10px;
     }
 
     #mensagem {
       margin-top: 20px;
       font-size: 1.5em;
       color: #ff007f;
+      min-height: 2em;
     }
   </style>
 </head>
 <body>
 
   <h1>Você me ama?</h1>
-  <div>
+  <div class="button-container">
     <button id="sim">Sim</button>
     <button id="nao">Não</button>
   </div>
@@ -61,14 +78,15 @@
     const simBtn = document.getElementById('sim');
     const naoBtn = document.getElementById('nao');
     const mensagem = document.getElementById('mensagem');
+    const container = document.querySelector('.button-container');
 
     simBtn.addEventListener('click', () => {
       mensagem.innerHTML = "Eu também <3";
     });
 
     naoBtn.addEventListener('mouseenter', () => {
-      const maxX = window.innerWidth - naoBtn.offsetWidth;
-      const maxY = window.innerHeight - naoBtn.offsetHeight;
+      const maxX = container.clientWidth - naoBtn.offsetWidth;
+      const maxY = container.clientHeight - naoBtn.offsetHeight;
       const randomX = Math.random() * maxX;
       const randomY = Math.random() * maxY;
 
